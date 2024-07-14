@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34601.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MONGO_DB_API", "MONGO_DB_API.csproj", "{883AD91E-3CB2-40A6-84C9-C440D77C372F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{883AD91E-3CB2-40A6-84C9-C440D77C372F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{883AD91E-3CB2-40A6-84C9-C440D77C372F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{883AD91E-3CB2-40A6-84C9-C440D77C372F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{883AD91E-3CB2-40A6-84C9-C440D77C372F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {44D0434A-93B5-467C-8041-1D4D5AEA009C}
+	EndGlobalSection
+EndGlobal
