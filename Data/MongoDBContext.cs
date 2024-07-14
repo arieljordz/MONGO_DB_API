@@ -16,9 +16,6 @@ namespace MONGO_DB_API.Data
             _database = client.GetDatabase(settings.Value.DatabaseName);
         }
 
-        // Collection for LogEntry
-        public IMongoCollection<LogEntry> Logs => _database.GetCollection<LogEntry>("Logs");
-
         // Expose a method to get a collection
         public IMongoCollection<T> GetCollection<T>(string name)
         {

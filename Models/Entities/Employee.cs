@@ -20,6 +20,12 @@ namespace MONGO_DB_API.Models.Entities
         public DateTime Birthday { get; set; }
 
         [Required(ErrorMessage = "Position is required.")]
-        public string? Position { get; set; }
+        public string? PositionId { get; set; }
+
+        [Required(ErrorMessage = "Email is required.")]
+        public string? Email { get; set; }
+
+        [Required(ErrorMessage = "Password is required.")]
+        public string? Password { get; set; }
     }
 }

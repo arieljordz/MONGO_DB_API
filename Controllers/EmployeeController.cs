@@ -107,6 +107,27 @@ namespace MONGO_DB_API.Controllers
             return NoContent();
         }
 
+        [HttpPost]
+        [Route("Login")]
+        public async Task<IActionResult> Login(LoginDto data)
+        {
+            _logger.LogInformation("Received request to login employees: {data.Email}", data.Email);
+
+            try
+            {
+                var result = await _employeeService.LoginAsync(data);
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred while login employees: {data.Email}", data.Email);
+                return StatusCode(500, "Internal server error");
+            }
+
+        }
+
+
         [HttpGet]
         [Route("GetEmployeeByPosition")]
         public async Task<ActionResult<IEnumerable<EmployeeDto>>> GetEmployeeByPosition(string position)
@@ -126,5 +147,6 @@ namespace MONGO_DB_API.Controllers
             }
       
         }
+    
     }
 }
