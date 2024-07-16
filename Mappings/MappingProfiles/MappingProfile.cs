@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MONGO_DB_API.Models.DTOs;
 using MONGO_DB_API.Models.Entities;
+using MongoDB.Bson;
 
 namespace MONGO_DB_API.Mappings.MappingProfiles
 {
@@ -9,12 +10,12 @@ namespace MONGO_DB_API.Mappings.MappingProfiles
         public MappingProfile()
         {
             // Employee mappings
-            CreateMap<Employee, EmployeeDto>();  // Employee entity to EmployeeDto DTO
-            CreateMap<EmployeeDto, Employee>();  // EmployeeDto DTO to Employee entity
+            CreateMap<Employee, EmployeeDto>(); 
+            CreateMap<EmployeeDto, Employee>(); 
 
-            // Position mappings
-            CreateMap<Position, PositionDto>();  // Position entity to PositionDto DTO
-            CreateMap<PositionDto, Position>();
+            // Department mappings
+            CreateMap<Department, DepartmentDto>(); 
+            CreateMap<DepartmentDto, Department>();
         }
     }
 }

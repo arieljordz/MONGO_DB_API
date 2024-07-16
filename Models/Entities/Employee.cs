@@ -17,10 +17,10 @@ namespace MONGO_DB_API.Models.Entities
         public string? LastName { get; set; }
 
         [Required(ErrorMessage = "Birthday is required.")]
-        public DateTime Birthday { get; set; }
+        public string? Birthday { get; set; }
 
-        [Required(ErrorMessage = "Position is required.")]
-        public string? PositionId { get; set; }
+        [Required(ErrorMessage = "DepartmentId is required.")]
+        public string? Department { get; set; }
 
         [Required(ErrorMessage = "Email is required.")]
         public string? Email { get; set; }

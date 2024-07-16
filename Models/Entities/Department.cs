@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MONGO_DB_API.Models.Entities
 {
-    public class Position
+    public class Department
     {
         public ObjectId Id { get; set; }
 

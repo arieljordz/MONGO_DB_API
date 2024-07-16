@@ -7,9 +7,9 @@ using MongoDB.Bson;
 
 namespace MONGO_DB_API.Services.Implementations
 {
-    public class PositionService : EntityService<Position, PositionDto>, IPositionService
+    public class DepartmentService : EntityService<Department, DepartmentDto>, IDepartmentService
     {
-        public PositionService(IEntityRepository<Position> repository, IMapper mapper)
+        public DepartmentService(IEntityRepository<Department> repository, IMapper mapper)
             : base(repository, mapper)
         {
         }

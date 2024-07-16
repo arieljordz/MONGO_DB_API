@@ -13,9 +13,9 @@ namespace MONGO_DB_API.Models.DTOs
 
         public string? LastName { get; set; }
 
-        public DateTime Birthday { get; set; }
+        public string? Birthday { get; set; }
 
-        public string? PositionId { get; set; }
+        public string? Department { get; set; }
 
         public string? Email { get; set; }
 

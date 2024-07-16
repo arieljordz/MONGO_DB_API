@@ -41,13 +41,13 @@ namespace MONGO_DB_API.Services.Implementations
             }
         }
 
-        public async Task<IEnumerable<EmployeeDto>> GetEmployeeByPositionAsync(string position)
+        public async Task<IEnumerable<EmployeeDto>> GetEmployeeByDepartmentAsync(string position)
         {
             _logger.LogInformation("Fetching employees by position: {Position}", position);
 
             try
             {
-                var employees = await _employeeRepository.GetEmployeeByPositionAsync(position);
+                var employees = await _employeeRepository.GetEmployeeByDepartmentAsync(position);
                 _logger.LogInformation("Successfully fetched employees by position: {Position}", position);
                 return employees;
             }

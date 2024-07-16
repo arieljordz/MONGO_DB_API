@@ -1,11 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
 using MONGO_DB_API.Models.Entities;
 using MONGO_DB_API.Services.Interfaces;
 using MONGO_DB_API.Models.DTOs;
-using MONGO_DB_API.Services.Implementations;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MONGO_DB_API.Controllers
 {
@@ -22,6 +20,7 @@ namespace MONGO_DB_API.Controllers
             _logger = logger;
         }
 
+        [Authorize]
         [HttpGet]
         [Route("GetAllEmployees")]
         public async Task<ActionResult<IEnumerable<EmployeeDto>>> GetAllEmployees()
@@ -30,6 +29,7 @@ namespace MONGO_DB_API.Controllers
             return Ok(employees);
         }
 
+        [Authorize]
         [HttpGet]
         [Route("GetEmployeeById")]
         public async Task<ActionResult<EmployeeDto>> GetEmployeeById(string id)
@@ -48,6 +48,7 @@ namespace MONGO_DB_API.Controllers
             return Ok(employee);
         }
 
+        //[Authorize]
         [HttpPost]
         [Route("CreateEmployee")]
         public async Task<ActionResult<EmployeeDto>> CreateEmployee(Employee employee)
@@ -62,6 +63,7 @@ namespace MONGO_DB_API.Controllers
             return CreatedAtAction(nameof(GetEmployeeById), new { id = createdEmployee.Id.ToString() }, createdEmployee);
         }
 
+        [Authorize]
         [HttpPut]
         [Route("UpdateEmployee")]
         public async Task<IActionResult> UpdateEmployee(string id, Employee employee)
@@ -87,6 +89,7 @@ namespace MONGO_DB_API.Controllers
             return NoContent();
         }
 
+        [Authorize]
         [HttpDelete]
         [Route("DeleteEmployee")]
         public async Task<IActionResult> DeleteEmployee(string id)
@@ -127,16 +130,16 @@ namespace MONGO_DB_API.Controllers
 
         }
 
-
+        [Authorize]
         [HttpGet]
-        [Route("GetEmployeeByPosition")]
-        public async Task<ActionResult<IEnumerable<EmployeeDto>>> GetEmployeeByPosition(string position)
+        [Route("GetEmployeeByDepartment")]
+        public async Task<ActionResult<IEnumerable<EmployeeDto>>> GetEmployeeByDepartment(string position)
         {
             _logger.LogInformation("Received request to fetch employees by position: {Position}", position);
 
             try
             {
-                var employees = await _employeeService.GetEmployeeByPositionAsync(position);
+                var employees = await _employeeService.GetEmployeeByDepartmentAsync(position);
 
                 return Ok(employees);
             }

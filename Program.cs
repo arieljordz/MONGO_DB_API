@@ -6,6 +6,9 @@ using MONGO_DB_API.Services.Interfaces;
 using MONGO_DB_API.Models.Entities;
 using MONGO_DB_API.Mappings.MappingProfiles;
 using MONGO_DB_API.Helpers;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,10 +20,10 @@ builder.Services.AddSwaggerGen();
 builder.Services.Configure<MongoDBSettings>(builder.Configuration.GetSection("MongoDBSettings"));
 builder.Services.AddSingleton<MongoDBContext>();
 builder.Services.AddTransient<IEntityRepository<Employee>, EntityRepository<Employee>>();
-builder.Services.AddTransient<IEntityRepository<Position>, EntityRepository<Position>>();
+builder.Services.AddTransient<IEntityRepository<Department>, EntityRepository<Department>>();
 builder.Services.AddTransient<IEmployeeRepository, EmployeeRepository>();
 builder.Services.AddTransient<IEmployeeService, EmployeeService>();
-builder.Services.AddTransient<IPositionService, PositionService>();
+builder.Services.AddTransient<IDepartmentService, DepartmentService>();
 
 // Register AutoMapper with your profiles
 builder.Services.AddAutoMapper(typeof(MappingProfile));
@@ -33,6 +36,23 @@ builder.Services.AddLogging(builder =>
     ));
 });
 
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = builder.Configuration["Jwt:Issuer"],
+        ValidAudience = builder.Configuration["Jwt:Audience"],
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+    };
+});
+
+// Add Authorization
+builder.Services.AddAuthorization();
 
 var app = builder.Build();
 

@@ -8,6 +8,6 @@ namespace MONGO_DB_API.Repositories.Interfaces
     {
         Task<ResultDto> LoginAsync(LoginDto data);
 
-        Task<IEnumerable<EmployeeDto>> GetEmployeeByPositionAsync(string position);
+        Task<IEnumerable<EmployeeDto>> GetEmployeeByDepartmentAsync(string position);
     }
 }
